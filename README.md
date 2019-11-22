@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/janmarius/TDAT2003-News-Paper/">
-    <img src="res/Logo.png" alt="logo" width="100" height="100">
+    <img src="res/Logo.jpg" alt="logo" width="100" height="100">
   </a>
 </p>
 
@@ -11,10 +11,10 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/janmarius/TDAT2003-News-Paper/">Travis CI</a>
+  <a href="https://travis-ci.org/janmarius/TDAT2003-News-Paper?icon=travis/">Travis CI</a>
 </p>
 
-[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-News-Paper.svg?branch=master)](https://travis-ci.org/janmarius/TDAT2003-News-Paper)
+[![Travis Build Status](https://badgen.net/travis/janmarius/TDAT2003-News-Paper?icon=travis)](https://travis-ci.org/janmarius/TDAT2003-News-Paper)
 
 ## Table of contents
 
@@ -37,14 +37,29 @@
 * Node.js
 * npm
 
-## Installing dependencies
+## Cloning and Installing dependencies
+```sh
+git clone https://github.com/janmarius/TDAT2003-News-Paper.git
+npm install --prefix TDAT2003-News-Paper/server
+npm install --prefix TDAT2003-News-Paper/client
+```
 
-
-## Compiling and running
-
+## Running
+```sh
+# Start server
+npm start --prefix TDAT2003-News/server
+# Start client
+npm start --prefix TDAT2003-News/client
+```
+Open http://localhost:3000/
 
 ## Testing
-
+```sh
+# Test server
+npm test --prefix TDAT2003-News/server
+# Test client
+npm test --prefix TDAT2003-News/client
+```
 
 ## What's included
 
