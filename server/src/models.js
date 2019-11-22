@@ -19,7 +19,7 @@ require('dotenv').config()
 // });
 
 const sequelize = new Sequelize(
-  process.env.CI ? 'travis-database' : process.env.DB_DATABASE,
+  process.env.CI ? 'travis_ci' : process.env.DB_DATABASE,
   process.env.CI ? 'root' : process.env.DB_USER,
   process.env.CI ? '' : process.env.DB_PW,
   {
