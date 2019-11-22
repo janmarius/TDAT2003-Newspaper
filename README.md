@@ -37,14 +37,29 @@
 * Node.js
 * npm
 
-## Installing dependencies
+## Cloning and Installing dependencies
+```sh
+git clone https://github.com/janmarius/TDAT2003-News-Paper.git
+npm install --prefix TDAT2003-News-Paper/server
+npm install --prefix TDAT2003-News-Paper/client
+```
 
-
-## Compiling and running
-
+## Running
+```sh
+# Start server
+npm start --prefix TDAT2003-News/server
+# Start client
+npm start --prefix TDAT2003-News/client
+```
+Open http://localhost:3000/
 
 ## Testing
-
+```sh
+# Start server
+npm test --prefix TDAT2003-News/server
+# Start client
+npm test --prefix TDAT2003-News/client
+```
 
 ## What's included
 
