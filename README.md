@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/janmarius/TDAT2003-News-Paper/">
-    <img src="res/Logo.png" alt="logo" width="100" height="100">
+    <img src="res/Logo.jpg" alt="logo" width="100" height="100">
   </a>
 </p>
 
