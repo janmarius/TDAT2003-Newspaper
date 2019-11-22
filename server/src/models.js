@@ -1,29 +1,16 @@
 // @flow
 
-//const Sequelize = require('sequelize')
-import Sequelize from 'sequelize';
+const Sequelize = require('sequelize');
+// import Sequelize from 'sequelize';
 import type { Model } from 'sequelize';
-require('dotenv').config()
-
-// //Local database
-// let sequelize = new Sequelize('TDAT2003-NewsPaper', 'root', 'example', {
-//   host: process.env.CI ? 'TDAT2003-NewsPaper' : 'localhost', // The host is 'mysql' when running in gitlab CI
-//   dialect: 'mysql',
-//
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     acquire: 30000,
-//     idle: 10000
-//   }
-// });
+require('dotenv').config();
 
 const sequelize = new Sequelize(
   process.env.CI ? 'travis_ci' : process.env.DB_DATABASE,
   process.env.CI ? 'root' : process.env.DB_USER,
   process.env.CI ? '' : process.env.DB_PW,
   {
-    host: process.env.CI ? '127.0.0.1' : process.env.DB_HOST, // The host is 'mysql' when running in gitlab CI
+    host: process.env.CI ? '127.0.0.1' : process.env.DB_HOST, // The host is '127.0.0.1' when running in Travis CI
     dialect: 'mysql',
 
     pool: {
@@ -44,23 +31,6 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-
-// let sequelize = new Sequelize(
-//   process.env.CI ? 'TDAT2003-NewsPaper' : 'root',
-//   process.env.CI ? 'root' : 'root',
-//   process.env.CI ? '' : 'example',
-//   {
-//     host: process.env.CI ? 'localhost' : 'localhost', // The host is 'mysql' when running in gitlab CI
-//     dialect: 'mysql',
-
-//     pool: {
-//       max: 5,
-//       min: 0,
-//       acquire: 30000,
-//       idle: 10000
-//     }
-//   }
-// );
 
 // freezeTableName: true, because sequelize could not handle the name Articles, database crashed when
 // freezeTableName: false (Error only found for Articles, but used true for all database tables for a cleaner pattern.

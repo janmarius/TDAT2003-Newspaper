@@ -15,10 +15,11 @@ before_install:
 #  - mysql -u root --default-character-set=utf8 travis_ci < testing-database.sql
 
 install:
-  - cd server && npm install && cd ..
-  - cd client && npm install && cd ..
+  - npm install -g flow-bin
+  - cd server && npm install
+  - cd ../client && npm install
 
 
 script:
-  - cd server && npm test && cd ..
-  - cd client && npm test && cd ..
+  - cd ../server && npm test && flow check src
+  - cd ../client && npm test && flow check src
