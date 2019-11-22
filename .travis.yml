@@ -4,6 +4,9 @@ node_js:
 cache: npm
 
 install:
+  - cd client
+  - npm ci
+  - cd ../server
   - npm ci
 
 script:
