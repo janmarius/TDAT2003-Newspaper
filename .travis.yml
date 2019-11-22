@@ -14,7 +14,6 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE travis_ci;'
 
 install:
-  - npm install --prefix server
-  - npm install --prefix client
+  - cd server && npm install
+  - cd ../client && npm install
 
-script:
