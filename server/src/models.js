@@ -1,7 +1,8 @@
 // @flow
 
-import Sequelize from 'sequelize';
+const Sequelize = require('sequelize')
 import type { Model } from 'sequelize';
+require('dotenv').config()
 
 // //Local database
 // let sequelize = new Sequelize('TDAT2003-NewsPaper', 'root', 'example', {
@@ -16,12 +17,12 @@ import type { Model } from 'sequelize';
 //   }
 // });
 
-let sequelize = new Sequelize(
-  process.env.CI ? 'School' : 'janmariv',
-  process.env.CI ? 'root' : 'janmariv',
-  process.env.CI ? '' : 'zLtPPmSs',
+const sequelize = new Sequelize(
+  process.env.CI ? 'School' : process.env.DB_DATABASE,
+  process.env.CI ? 'root' : process.env.DB_USER,
+  process.env.CI ? '' : process.env.DB_PW,
   {
-    host: process.env.CI ? 'mysql' : 'mysql.stud.iie.ntnu.no', // The host is 'mysql' when running in gitlab CI
+    host: process.env.CI ? 'mysql' : process.env.DB_HOST, // The host is 'mysql' when running in gitlab CI
     dialect: 'mysql',
 
     pool: {
@@ -32,6 +33,15 @@ let sequelize = new Sequelize(
     }
   }
 );
+
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 
 // let sequelize = new Sequelize(

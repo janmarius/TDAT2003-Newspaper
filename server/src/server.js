@@ -48,7 +48,7 @@ app.post('/articles', (req: Request, res: Response) => {
     image: req.body.image,
     important: req.body.important,
     category: req.body.category
-  }).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+  }).then(count => (count ? res.sendStatus(200) : res.sendStatus(409))); // 409 conflict
 });
 
 app.get('/articles/category/:category', (req: Request, res: Response) => {
