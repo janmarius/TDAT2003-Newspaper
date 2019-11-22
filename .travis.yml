@@ -20,4 +20,5 @@ install:
 
 
 script:
-  - cd server && npm test
+  - cd server && npm test && cd ..
+  - cd client && npm test && cd ..
