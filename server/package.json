@@ -4,7 +4,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/server.js",
     "start-prod": "cross-env NODE_ENV=production babel-node src/server.js",
-    "test": "CI=true jest --forceExit"
+    "test": "jest --forceExit"
   },
   "jest": {
     "testRegex": "./tests/.+Test\\.js$",
