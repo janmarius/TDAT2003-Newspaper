@@ -1,46 +1,55 @@
-# Example client-server application using a client service object
-The application will reload on source changes.
+<p align="center">
+  <a href="https://github.com/janmarius/TDAT2003-News-Paper/">
+    <img src="res/Logo.png" alt="logo" width="100" height="100">
+  </a>
+</p>
 
-## Client: run tests and start
-From the top-level repository folder:
-```sh
-cd client
-npm install
-npm test
-npm start
-```
+<h3 align="center">News Paper</h3>
 
-## Server: run tests and start
-Prerequisite: mysql-server installed locally
+<p align="center">
+  News Paper
+</p>
 
-In case you have mysql 8 or newer installed:
-```sh
-echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY ''" | mysql -uroot
-```
+<p align="center">
+  <a href="https://travis-ci.org/janmarius/TDAT2003-News-Paper/">Travis CI</a>
+</p>
 
-Create the mysql database used by server:
-```sh
-echo "CREATE DATABASE School" | mysql -uroot
-```
+[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-News-Paper.svg?branch=master)](https://travis-ci.org/janmarius/TDAT2003-News-Paper)
 
-From the top-level repository folder:
-```sh
-cd server
-npm install
-npm test
-npm start
-```
+## Table of contents
 
-## Open application
-http://localhost:3000
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installing dependencies](#installing-dependencies)
+- [Compiling and running](#compiling-and-running)
+- [Testing](#testing)
+- [What's included](#whats-included)
+- [Implemented functionality](#implemented-functionality)
+- [Future work](#future-work)
 
-## For those interested: production-mode
-To build the client for production/deployment:
-```sh
-npm run build-prod
-```
 
-To run the server in production mode:
-```sh
-npm run start-prod
-```
+
+## Introduction
+
+
+## Prerequisites
+* Linux
+* Node.js
+* npm
+
+## Installing dependencies
+
+
+## Compiling and running
+
+
+## Testing
+
+
+## What's included
+
+
+## Implemented functionality
+
+
+## Future work
