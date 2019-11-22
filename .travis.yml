@@ -1,17 +1,21 @@
 language: node_js
+
+sudo: required
+
+services:
+  - mysql
+
 node_js:
   - 12.13.0
+
 cache: npm
 
+before_install:
+  - sudo apt update
+  - mysql -e 'CREATE DATABASE travis-database'
+
 install:
-  - ls
-  - cd client
-  - ls
-  - npm install
-  - ls
-  - cd ../server
-  - ls
-  - npm install
-  - ls
+  - sudo npm install --prefix server
+  - sudo npm install --prefix client
 
 script:
