@@ -55,9 +55,9 @@ Open http://localhost:3000/
 
 ## Testing
 ```sh
-# Start server
+# Test server
 npm test --prefix TDAT2003-News/server
-# Start client
+# Test client
 npm test --prefix TDAT2003-News/client
 ```
 
