@@ -12,7 +12,7 @@ cache: npm
 before_install:
   - sudo apt-get update
   - mysql -e 'CREATE DATABASE travis_ci;'
-  - mysql -u root --default-character-set=utf8 travis_ci < testing-database.sql
+#  - mysql -u root --default-character-set=utf8 travis_ci < testing-database.sql
 
 install:
   - cd server && npm install && cd ..
@@ -20,4 +20,4 @@ install:
 
 
 script:
-  - cd server && npm test
+  - cd server && npm test-ci
