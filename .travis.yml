@@ -11,8 +11,8 @@ node_js:
 cache: npm
 
 before_install:
-  - sudo apt update
-  - sudo mysql -e 'CREATE DATABASE travis-database;'
+  - sudo apt-get update
+  - sudo mysql -e 'CREATE DATABASE travis_ci;'
 
 install:
   - sudo npm install --prefix server
