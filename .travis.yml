@@ -10,7 +10,7 @@ node_js:
 cache: npm
 
 before_install:
-  - apt-get update
+  - sudo apt-get update
   - mysql -e 'CREATE DATABASE travis_ci;'
   - mysql -u root --default-character-set=utf8 travis_ci < scripts/testing-database.sql
 
