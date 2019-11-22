@@ -4,12 +4,18 @@ node_js:
 cache: npm
 
 install:
+  - ls
   - cd client
+  - ls
   - npm install
+  - ls
   - cd ../server
+  - ls
   - npm install
+  - ls
 
 script:
+
 
 deploy:
   provider: pages
