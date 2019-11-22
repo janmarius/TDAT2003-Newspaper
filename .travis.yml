@@ -5,9 +5,9 @@ cache: npm
 
 install:
   - cd client
-  - npm ci
+  - npm install
   - cd ../server
-  - npm ci
+  - npm install
 
 script:
 
