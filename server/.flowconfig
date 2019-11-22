@@ -1,0 +1,5 @@
+# .flowconfig
+# Flow started to complain about deprecated utility ($Subtype and $Supertype), that is why deprecated-utility=off.
+# https://dev.to/wgao19/making-flow-happy-after-0-98-32bb
+[lints]
+deprecated-utility=off

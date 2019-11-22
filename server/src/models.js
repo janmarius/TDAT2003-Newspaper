@@ -1,9 +1,10 @@
-// @flow
+
 
 const Sequelize = require('sequelize');
 // import Sequelize from 'sequelize';
 import type { Model } from 'sequelize';
 require('dotenv').config();
+
 
 const sequelize = new Sequelize(
   process.env.CI ? 'travis_ci' : process.env.DB_DATABASE,

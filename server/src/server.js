@@ -129,7 +129,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // The listen promise can be used to wait for the web server to start (for instance in your tests)
 export let listen = new Promise<void>((resolve, reject) => {
-  app.listen(3000, error => {
+  app.listen(3000, (error : any) => {
     if (error) reject(error.message);
     console.log('Server started');
     resolve();
