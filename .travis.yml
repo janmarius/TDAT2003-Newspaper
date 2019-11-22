@@ -15,8 +15,8 @@ before_install:
   - mysql -u root --default-character-set=utf8 travis_ci < testing-database.sql
 
 install:
-  - cd server && npm install && npm start && cd ..
-  - cd client && npm install && npm start && cd ..
+  - cd server && npm install && cd ..
+  - cd client && npm install && cd ..
 
 
 script:
