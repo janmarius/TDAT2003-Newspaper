@@ -3,18 +3,35 @@
 import Sequelize from 'sequelize';
 import type { Model } from 'sequelize';
 
-//Local database
-let sequelize = new Sequelize('TDAT2003-NewsPaper', 'root', 'example', {
-  host: process.env.CI ? 'TDAT2003-NewsPaper' : 'localhost', // The host is 'mysql' when running in gitlab CI
-  dialect: 'mysql',
+// //Local database
+// let sequelize = new Sequelize('TDAT2003-NewsPaper', 'root', 'example', {
+//   host: process.env.CI ? 'TDAT2003-NewsPaper' : 'localhost', // The host is 'mysql' when running in gitlab CI
+//   dialect: 'mysql',
+//
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000
+//   }
+// });
 
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
+let sequelize = new Sequelize(
+  process.env.CI ? 'School' : 'janmariv',
+  process.env.CI ? 'root' : 'janmariv',
+  process.env.CI ? '' : 'zLtPPmSs',
+  {
+    host: process.env.CI ? 'mysql' : 'mysql.stud.iie.ntnu.no', // The host is 'mysql' when running in gitlab CI
+    dialect: 'mysql',
+
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
   }
-});
+);
 
 
 // let sequelize = new Sequelize(
