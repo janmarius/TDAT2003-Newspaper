@@ -1,124 +1,58 @@
 // @flow
-
+import category from './routes/category.js';
+import articles from './routes/articles.js';
+import comment from './routes/comment.js';
 import express from 'express';
 import path from 'path';
 import reload from 'reload';
 import fs from 'fs';
 
-import { Category } from './models.js';
-import { Article } from './models.js';
-import { Comment } from './models.js';
+const public_path = path.join(__dirname, '/../../client/public');
+const app = express();
+const helmet = require('helmet');
 
 type Request = express$Request;
 type Response = express$Response;
 
-const public_path = path.join(__dirname, '/../../client/public');
-
-let app = express();
-
+// Helmet helps you secure your Express apps by setting various HTTP headers.
+app.use(helmet());
 app.use(express.static(public_path));
 app.use(express.json()); // For parsing application/json
 
-app.get('/categories', (req: Request, res: Response) => {
-  return Category.findAll({
-    order: [['priority', 'ASC']]
-  }).then(categories => res.send(categories));
+app.get('/api/categories', (req: Request, res: Response) => {
+  category.getAllCategories(req, res);
 });
 
-app.get('/articles', (req: Request, res: Response) => {
-  return Article.findAll({
-    order: [['updatedAt', 'DESC']]
-  }).then(articles => res.send(articles));
+app.get('/api/articles', (req: Request, res: Response) => {
+  articles.getAllArticles(req, res);
 });
 
-app.post('/articles', (req: Request, res: Response) => {
-  if (
-    !req.body ||
-    typeof req.body.title != 'string' ||
-    typeof req.body.body != 'string' ||
-    typeof req.body.image != 'string' ||
-    typeof req.body.category != 'string' ||
-    typeof req.body.important != 'boolean'
-  )
-    return res.sendStatus(400);
-
-  return Article.create({
-    title: req.body.title,
-    body: req.body.body,
-    image: req.body.image,
-    important: req.body.important,
-    category: req.body.category
-  }).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+app.post('/api/articles', (req: Request, res: Response) => {
+  articles.createNewArticle(req, res);
 });
 
-app.get('/articles/category/:category', (req: Request, res: Response) => {
-  return Article.findAll({
-    where: {
-      category: req.params.category
-    },
-    order: [['updatedAt', 'DESC']]
-  }).then(article => res.send(article));
+app.get('/api/articles/category/:category', (req: Request, res: Response) => {
+  articles.getAllArticlesInCategory(req, res);
 });
 
-app.get('/articles/category/:category/id/:id', (req: Request, res: Response) => {
-  return Article.findOne({ where: { id: Number(req.params.id), category: req.params.category } }).then(
-    article => (article ? res.send(article) : res.sendStatus(404))
-  );
+app.get('/api/articles/category/:category/id/:id', (req: Request, res: Response) => {
+  articles.getArticleInCategoryById(req, res);
 });
 
-app.put('/articles/category/:category/id/:id', (req: Request, res: Response) => {
-  if (
-    !req.body ||
-    typeof req.body.id != 'number' ||
-    typeof req.body.title != 'string' ||
-    typeof req.body.body != 'string' ||
-    typeof req.body.image != 'string' ||
-    typeof req.body.category != 'string' ||
-    typeof req.body.important != 'boolean'
-  )
-    return res.sendStatus(400);
-
-  return Article.update(
-    {
-      title: req.body.title,
-      body: req.body.body,
-      image: req.body.image,
-      important: req.body.important,
-      category: req.body.category
-    },
-    { where: { id: Number(req.params.id), category: req.params.category } }
-  ).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+app.put('/api/articles/category/:category/id/:id', (req: Request, res: Response) => {
+  articles.updateArticle(req, res);
 });
 
-app.delete('/articles/category/:category/id/:id', (req: Request, res: Response) => {
-  return Article.destroy({ where: { id: Number(req.params.id), category: req.params.category } }).then(
-    article => (article ? res.send() : res.status(500).send())
-  );
+app.delete('/api/articles/category/:category/id/:id', (req: Request, res: Response) => {
+  articles.deleteArticle(req, res);
 });
 
-app.get('/comments/article_id/:article_id', (req: Request, res: Response) => {
-  return Comment.findAll({
-    where: {
-      article_id: req.params.article_id
-    },
-    order: [['createdAt', 'DESC']]
-  }).then(comments => res.send(comments));
+app.get('/api/comments/article_id/:article_id', (req: Request, res: Response) => {
+  comment.getAllComments(req, res);
 });
 
-app.post('/comments/article_id/:atricle_id/new', (req: Request, res: Response) => {
-  if (
-    !req.body ||
-    typeof req.body.nickname != 'string' ||
-    typeof req.body.comment != 'string' ||
-    typeof req.body.article_id != 'number'
-  )
-    return res.sendStatus(400);
-
-  return Comment.create({
-    nickname: req.body.nickname,
-    comment: req.body.comment,
-    article_id: req.body.article_id
-  }).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+app.post('/api/comments/article_id/:atricle_id/new', (req: Request, res: Response) => {
+  comment.addComment(req, res);
 });
 
 // Hot reload application when not in production environment
@@ -129,7 +63,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // The listen promise can be used to wait for the web server to start (for instance in your tests)
 export let listen = new Promise<void>((resolve, reject) => {
-  app.listen(3000, (error : any) => {
+  app.listen(3000, (error: any) => {
     if (error) reject(error.message);
     console.log('Server started');
     resolve();
