@@ -4,7 +4,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/server.js",
     "start-prod": "cross-env NODE_ENV=production babel-node src/server.js",
-    "test": "jest --forceExit"
+    "test": "jest --forceExit --runInBand"
   },
   "jest": {
     "testRegex": "./tests/.+Test\\.js$",
@@ -17,7 +17,8 @@
     "helmet": "^3.21.2",
     "mysql2": "^1.6.1",
     "reload": "^2.3.1",
-    "sequelize": "^4.41.0"
+    "sequelize": "^4.41.0",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

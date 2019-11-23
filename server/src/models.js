@@ -93,7 +93,7 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
           // $FlowFixMe
           .createArticle({
             title: 'NewsTitle1',
-            body: 'NewsBody1',
+            body: '# War \n\n Today the war started ```sh\nnpm test```',
             image:
               'https://images.unsplash.com/photo-1494972688394-4cc796f9e4c5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5966fbd4a3212dc13c7ad81c4d665354&auto=format&fit=crop&w=1350&q=80',
             important: true
