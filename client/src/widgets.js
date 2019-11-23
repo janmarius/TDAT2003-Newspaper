@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { NavLink } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { Comment } from './services';
 import { Category } from './services';
 import { Article } from './services';
@@ -186,6 +187,7 @@ export class AllArticlesOfOneCategory extends Component<{ articles: Article[] }>
 
 export class ArticleDetailsView extends Component<{ article: Article, comments: Comment[] }> {
   render() {
+    const input = '# This is a header'
     return (
       <div>
         <div className={'container container-extra'}>
@@ -196,7 +198,7 @@ export class ArticleDetailsView extends Component<{ article: Article, comments: 
                 <div className={'card-body'}>
                   <h1 className={'card-title card-title-extra'}>{this.props.article.title}</h1>
                   <p className={'card-text'}>{dateFormat(this.props.article.updatedAt, 'd.m.yy HH:MM')}</p>
-                  <p className="card-text">{this.props.article.body}</p>
+                  <ReactMarkdown source={this.props.article.body} />
 
                   <NavLink
                     className={'btn btn-outline-dark articleButtonColor'}

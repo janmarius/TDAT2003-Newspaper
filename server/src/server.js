@@ -61,6 +61,8 @@ if (process.env.NODE_ENV !== 'production') {
   fs.watch(public_path, () => reloadServer.reload());
 }
 
+export let application = app;
+
 // The listen promise can be used to wait for the web server to start (for instance in your tests)
 export let listen = new Promise<void>((resolve, reject) => {
   app.listen(3000, (error: any) => {
