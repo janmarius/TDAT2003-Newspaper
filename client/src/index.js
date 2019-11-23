@@ -16,6 +16,7 @@ import { ArticleDetailsView } from './widgets';
 import { EditArticleForm } from './widgets';
 import { DeleteArticleForm } from './widgets';
 import { AddNewArticleForm } from './widgets';
+import { Footer } from './widgets';
 
 // Services
 import { Comment } from './services';
@@ -26,6 +27,8 @@ import { comment } from './services';
 import { articleService } from './services';
 import { categoryService } from './services';
 import { commentService } from './services';
+
+let FontAwesome = require('react-fontawesome');
 
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {
@@ -264,6 +267,7 @@ if (root)
         <Route exact path="/category/:category/id/:id/edit" component={ArticleEdit} />
         <Route exact path="/category/:category/id/:id/delete" component={ArticleDelete} />
         <Route exact path="/category/:category/id/:id/comments/new" component={ArticleAddComment} />
+        <Footer />
       </div>
     </HashRouter>,
     root
