@@ -97,7 +97,6 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
     })
       .then(category => {
         category
-          // $FlowFixMe
           .createArticle({
             title: 'NewsTitle1',
             body: 'NewsBody1',

@@ -2,6 +2,7 @@
 
 import { Article, Category, Comment, sync } from '../src/models.js';
 
+
 beforeAll(async () => {
   await sync;
 });
