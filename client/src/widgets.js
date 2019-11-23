@@ -10,6 +10,7 @@ import { Category } from './services';
 import { Article } from './services';
 
 const dateFormat = require('dateformat');
+let FontAwesome = require('react-fontawesome');
 
 export class NavBarMenu extends Component<{ categories: Category[] }> {
   render() {
@@ -19,7 +20,13 @@ export class NavBarMenu extends Component<{ categories: Category[] }> {
           <tr>
             <td>
               <a className="navbar-brand" href="#">
-                <img src="https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/logo.png" width="60" height="40" className="d-inline-block align-top" alt=""/>
+                <img
+                  src="https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/logo.png"
+                  width="60"
+                  height="40"
+                  className="d-inline-block align-top"
+                  alt=""
+                />
               </a>
             </td>
             <td>
@@ -192,7 +199,7 @@ export class AllArticlesOfOneCategory extends Component<{ articles: Article[] }>
 
 export class ArticleDetailsView extends Component<{ article: Article, comments: Comment[] }> {
   render() {
-    const input = '# This is a header'
+    const input = '# This is a header';
     return (
       <div>
         <div className={'container container-extra'}>
@@ -506,6 +513,40 @@ export class AddNewArticleForm extends Component<{
             <input type="submit" className="form-control" value="Save changes" onClick={this.props.addMethod} />
           </div>
         </form>
+      </div>
+    );
+  }
+}
+
+export class Footer extends Component<{}> {
+  render() {
+    return (
+      <div className="footer pt-4 mt-4">
+        <hr className="footer-line-style" />
+        <div className="text-center sosial-media-buttons">
+          <a href="https://www.facebook.com/">
+            <FontAwesome className="sosial-media-buttons" name="facebook" />
+          </a>{' '}
+          <a href="https://www.instagram.com/">
+            <FontAwesome className="sosial-media-buttons" name="instagram" />
+          </a>{' '}
+          <a href="https://www.spotify.com/">
+            <FontAwesome className="sosial-media-buttons" name="spotify" />
+          </a>{' '}
+          <a href="https://www.itunes.com/">
+            <FontAwesome className="sosial-media-buttons" name="apple" />
+          </a>
+        </div>
+        <div className="text-center">
+          <div fluid="true">
+            <a className="contact-info contact-info-margin " href="janmariv@stud.ntnu.no">
+              janmariv@stud.ntnu.no
+            </a>
+            <a className="contact-info contact-info-margin " href="tel:+4799998888">
+              +4799998888
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
