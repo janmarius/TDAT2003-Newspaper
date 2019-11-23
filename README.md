@@ -33,7 +33,6 @@
 
 
 ## Prerequisites
-* Linux
 * Node.js
 * npm
 
