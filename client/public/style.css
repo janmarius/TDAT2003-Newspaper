@@ -1,0 +1,99 @@
+body {
+  background-color: #d6d8db;
+}
+
+.addNewArticleRight {
+  float: right;
+}
+
+.divInline {
+  display: inline-block;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.makeBlock {
+  display: block;
+}
+
+.underline:hover {
+  text-decoration: underline;
+}
+
+.newsFeedHead {
+  display: inline-block;
+  font-weight: normal;
+}
+
+.newsFeedArticleBox {
+  display: inline-block;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.newsFeedArticle {
+  display: inline-block;
+  color: black;
+  font-weight: normal;
+}
+
+.newsFeedArticle:hover {
+  text-decoration: underline;
+}
+
+.container-extra {
+  margin-top: 1%;
+}
+
+.card-extra {
+  margin-bottom: 5%;
+}
+
+.card-title-extra {
+  color: black;
+}
+
+.card-title-extra:hover {
+  color: black;
+}
+
+.inputImportantLeft {
+  float: left;
+}
+
+.imageContainer {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imagePreviewer {
+  width: 100%;
+  height: 100%;
+}
+
+/*.imagePreviewer:before {*/
+/*content: ' ';*/
+/*display: block;*/
+/*position: center;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*background-image: url(http://grw.trains.com/sitefiles/images/no-preview-available.png);*/
+/*}*/
+
+.articleButtonColor {
+  float: right;
+  margin: 0.1%;
+}
+
+.deleteArticleStyle {
+  text-align: center;
+}
+
+.deleteButtonStyle {
+  float: right;
+
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+}

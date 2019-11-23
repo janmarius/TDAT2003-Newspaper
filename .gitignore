@@ -77,10 +77,7 @@ typings/
 .next
 
 # nuxt.js build output
-.nuxt
-
-# react / gatsby 
-public/
+.nuxt/
 
 # vuepress build output
 .vuepress/dist
