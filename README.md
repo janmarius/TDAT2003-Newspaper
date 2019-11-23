@@ -7,7 +7,7 @@
 <h3 align="center">Newspaper</h3>
 
 <p align="center">
-  Newspaper
+  This is a newspaper for those who want to share the little things
 </p>
 
 <p align="center">
