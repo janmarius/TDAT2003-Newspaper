@@ -16,27 +16,27 @@ export let article = new Article();
 
 class ArticleService {
   getAllArticles(): Promise<Article[]> {
-    return axios.get('/articles');
+    return axios.get('/api/articles');
   }
 
   getAllOfCategory(category: string): Promise<Article[]> {
-    return axios.get('/articles/category/' + category);
+    return axios.get('/api/articles/category/' + category);
   }
 
   getOneArticles(id: number, category: string): Promise<Article> {
-    return axios.get('/articles/category/' + category + '/id/' + id);
+    return axios.get('/api/articles/category/' + category + '/id/' + id);
   }
 
   updateArticles(article: Article, id: number, category: string): Promise<void> {
-    return axios.put('/articles/category/' + category + '/id/' + id, article);
+    return axios.put('/api/articles/category/' + category + '/id/' + id, article);
   }
 
   deleteArticles(id: number, category: string): Promise<void> {
-    return axios.delete('/articles/category/' + category + '/id/' + id);
+    return axios.delete('/api/articles/category/' + category + '/id/' + id);
   }
 
   addArticles(article: Article): Promise<Article> {
-    return axios.post('/articles', article);
+    return axios.post('/api/articles', article);
   }
 }
 export let articleService = new ArticleService();
@@ -49,7 +49,7 @@ export let category = new Category();
 
 class CategoryService {
   getAllCategories(): Promise<Category[]> {
-    return axios.get('/categories');
+    return axios.get('/api/categories');
   }
 }
 export let categoryService = new CategoryService();
@@ -66,11 +66,11 @@ export let comment = new Comment();
 
 class CommentService {
   getAllComments(article_id: number): Promise<Comment[]> {
-    return axios.get('/comments/article_id/' + article_id);
+    return axios.get('/api/comments/article_id/' + article_id);
   }
 
   addComments(article_id: number, comment: Comment): Promise<Comment> {
-    return axios.post('/comments/article_id/' + article_id + '/new', comment);
+    return axios.post('/api/comments/article_id/' + article_id + '/new', comment);
   }
 }
 export let commentService = new CommentService();
