@@ -1,20 +1,20 @@
 <p align="center">
-  <a href="https://github.com/janmarius/TDAT2003-News-Paper/">
+  <a href="https://github.com/janmarius/TDAT2003-Newspaper/">
     <img src="res/logo.png" alt="logo" width="100" height="100">
   </a>
 </p>
 
-<h3 align="center">News Paper</h3>
+<h3 align="center">Newspaper</h3>
 
 <p align="center">
-  News Paper
+  Newspaper
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/janmarius/TDAT2003-News-Paper?icon=travis/">Travis CI</a>
+  <a href="https://travis-ci.org/janmarius/TDAT2003-Newspaper?icon=travis/">Travis CI</a>
 </p>
 
-[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-News-Paper.svg?branch=master)](https://travis-ci.org/janmarius/TDAT2003-News-Paper)
+[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-Newspaper.svg?branch=master)](https://travis-ci.org/janmarius/TDAT2003-Newspaper)
 
 ## Table of contents
 
@@ -39,15 +39,15 @@
 
 ## Cloning and Installing dependencies
 ```sh
-git clone https://github.com/janmarius/TDAT2003-News-Paper.git
-npm install --prefix TDAT2003-News-Paper/server
-npm install --prefix TDAT2003-News-Paper/client
+git clone https://github.com/janmarius/TDAT2003-Newspaper.git
+npm install --prefix TDAT2003-Newspaper/server
+npm install --prefix TDAT2003-Newspaper/client
 ```
 
 ## Running
-Add .env in TDAT2003-News-Paper/server:
+Add .env in TDAT2003-Newspaper/server:
 ```sh
-touch /TDAT2003-News-Paper/server/.env
+touch /TDAT2003-Newspaper/server/.env
 ```
 Add database information in .env:
 ```
@@ -59,18 +59,18 @@ DB_HOST=<HOST>
 Then start the server and client:
 ```sh
 # Start server
-npm start --prefix TDAT2003-News-Paper/server
+npm start --prefix TDAT2003-Newspaper/server
 # Start client
-npm start --prefix TDAT2003-News-Paper/client
+npm start --prefix TDAT2003-Newspaper/client
 ```
 Open http://localhost:3000/
 
 ## Testing
 ```sh
 # Test server
-npm test --prefix TDAT2003-News-Paper/server
+npm test --prefix TDAT2003-Newspaper/server
 # Test client
-npm test --prefix TDAT2003-News-Paper/client
+npm test --prefix TDAT2003-Newspaper/client
 ```
 
 ## What's included
