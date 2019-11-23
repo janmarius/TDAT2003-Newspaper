@@ -18,6 +18,11 @@ export class NavBarMenu extends Component<{ categories: Category[] }> {
         <tbody>
           <tr>
             <td>
+              <a className="navbar-brand" href="#">
+                <img src="https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/logo.png" width="60" height="40" className="d-inline-block align-top" alt=""/>
+              </a>
+            </td>
+            <td>
               <NavLink className={'navbar-brand'} activeStyle={{ color: 'darkblue' }} exact to="/">
                 Home
               </NavLink>
