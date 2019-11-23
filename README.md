@@ -45,20 +45,32 @@ npm install --prefix TDAT2003-News-Paper/client
 ```
 
 ## Running
+Add .env in TDAT2003-News-Paper/server:
+```sh
+touch /TDAT2003-News-Paper/server/.env
+```
+Add database information in .env:
+```
+DB_DATABASE=<DATABASE>
+DB_USER=<USER>
+DB_PW=<PASSWORD>
+DB_HOST=<HOST>
+```
+Then start the server and client:
 ```sh
 # Start server
-npm start --prefix TDAT2003-News/server
+npm start --prefix TDAT2003-News-Paper/server
 # Start client
-npm start --prefix TDAT2003-News/client
+npm start --prefix TDAT2003-News-Paper/client
 ```
 Open http://localhost:3000/
 
 ## Testing
 ```sh
 # Test server
-npm test --prefix TDAT2003-News/server
+npm test --prefix TDAT2003-News-Paper/server
 # Test client
-npm test --prefix TDAT2003-News/client
+npm test --prefix TDAT2003-News-Paper/client
 ```
 
 ## What's included
