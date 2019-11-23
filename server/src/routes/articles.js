@@ -68,7 +68,7 @@ module.exports = {
   },
   deleteArticle: function(req: Request, res: Response) {
     return Article.destroy({ where: { id: Number(req.params.id), category: req.params.category } }).then(article =>
-      article ? res.send() : res.status(500).send()
+      article ? res.send() : res.status(400).send()
     );
   }
 };
