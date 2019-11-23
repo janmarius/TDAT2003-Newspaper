@@ -32,23 +32,6 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-// let sequelize = new Sequelize(
-//   process.env.CI ? 'School' : 'janmariv',
-//   process.env.CI ? 'root' : 'janmariv',
-//   process.env.CI ? '' : 'cdgRaKKE',
-//   {
-//     host: process.env.CI ? 'mysql' : 'mysql.stud.iie.ntnu.no', // The host is 'mysql' when running in gitlab CI
-//     dialect: 'mysql',
-//
-//     pool: {
-//       max: 5,
-//       min: 0,
-//       acquire: 30000,
-//       idle: 10000
-//     }
-//   }
-// );
-
 // freezeTableName: true, because sequelize could not handle the name Articles, database crashed when
 // freezeTableName: false (Error only found for Articles, but used true for all database tables for a cleaner pattern.
 export let Article: Class<
