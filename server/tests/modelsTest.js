@@ -185,8 +185,6 @@ describe("Article.findAll() where: {category: 'Sport'} test", () => {
 
 describe('Article.findOne() where: {id: 1} test', () => {
   it('correct data', async () => {
-    // Flow gave an error when using sequelize .findOne method, couldn't find the cause. Used flow fix me to ignore the error.
-    // $FlowFixMe
     let article = await Article.findOne({ where: { id: 1 } });
     let articleAsArray = [article];
 
