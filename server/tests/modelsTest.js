@@ -5,7 +5,7 @@ import { Article, Category, Comment, sync } from '../src/models.js';
 beforeAll(async () => {
   await sync;
 });
-
+Some error in the code
 describe("Category.findAll() {order: [['priority', 'ASC']]} test", () => {
   it('correct data', async () => {
     let category = await Category.findAll({
