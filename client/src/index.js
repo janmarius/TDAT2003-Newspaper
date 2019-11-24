@@ -53,14 +53,14 @@ class Menu extends Component {
   }
 }
 
-class Home extends Component {
+export class Home extends Component {
   articles: Article[] = [];
 
   render() {
     return (
       <div>
         <LiveNewsFeed articles={this.articles} maxNumberOfArticles={5} />
-        <AllArticles articles={this.articles} maxNumberOfArticles={20} />
+        <AllArticles articles={this.articles} maxNumberOfArticles={20} inputObject={this} />
       </div>
     );
   }
@@ -69,6 +69,17 @@ class Home extends Component {
     articleService
       .getAllArticles()
       .then(articles => (this.articles = articles))
+      .catch((error: Error) => Alert.danger(error.message));
+  }
+
+  save(article: Article, id: number, category: string) {
+    articleService
+      .updateArticlesLikes(article, id, category)
+      .then(() => {
+        let home = Home.instance();
+        if (home) home.mounted();
+        if (article) history.push('/');
+      })
       .catch((error: Error) => Alert.danger(error.message));
   }
 }
@@ -121,7 +132,7 @@ class ArticleCategoryList extends Component<{ match: { params: { category: strin
   }
 }
 
-class ArticleDetails extends Component<{ match: { params: { id: number, category: string } } }> {
+export class ArticleDetails extends Component<{ match: { params: { id: number, category: string } } }> {
   article = null;
   comments: Comment[] = [];
 

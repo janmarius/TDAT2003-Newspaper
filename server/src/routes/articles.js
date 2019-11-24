@@ -27,7 +27,8 @@ module.exports = {
       body: req.body.body,
       image: req.body.image,
       important: req.body.important,
-      category: req.body.category
+      category: req.body.category,
+      likes: 0
     }).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
   },
   getAllArticlesInCategory: function(req: Request, res: Response) {
@@ -51,7 +52,8 @@ module.exports = {
       typeof req.body.body != 'string' ||
       typeof req.body.image != 'string' ||
       typeof req.body.category != 'string' ||
-      typeof req.body.important != 'boolean'
+      typeof req.body.important != 'boolean' ||
+      typeof req.body.likes != 'number'
     )
       return res.sendStatus(400);
 
@@ -61,7 +63,34 @@ module.exports = {
         body: req.body.body,
         image: req.body.image,
         important: req.body.important,
-        category: req.body.category
+        category: req.body.category,
+        likes: req.body.likes
+      },
+      { where: { id: Number(req.params.id), category: req.params.category } }
+    ).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+  },
+
+  updateArticleLikes: function(req: Request, res: Response) {
+    if (
+      !req.body ||
+      typeof req.body.id != 'number' ||
+      typeof req.body.title != 'string' ||
+      typeof req.body.body != 'string' ||
+      typeof req.body.image != 'string' ||
+      typeof req.body.category != 'string' ||
+      typeof req.body.important != 'boolean' ||
+      typeof req.body.likes != 'number'
+    )
+      return res.sendStatus(400);
+
+    return Article.update(
+      {
+        title: req.body.title,
+        body: req.body.body,
+        image: req.body.image,
+        important: req.body.important,
+        category: req.body.category,
+        likes: req.body.likes + 1
       },
       { where: { id: Number(req.params.id), category: req.params.category } }
     ).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));

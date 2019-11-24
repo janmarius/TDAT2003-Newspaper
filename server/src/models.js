@@ -5,7 +5,15 @@ import type { Model } from 'sequelize';
 import sequelize from './db';
 
 export let Article: Class<
-  Model<{ id?: number, title: string, body: string, image: string, important: boolean, category?: string }>
+  Model<{
+    id?: number,
+    title: string,
+    body: string,
+    image: string,
+    important: boolean,
+    likes: number,
+    category?: string
+  }>
 > = sequelize.define(
   'Article',
   {
@@ -13,7 +21,8 @@ export let Article: Class<
     title: Sequelize.STRING,
     body: Sequelize.TEXT,
     image: Sequelize.TEXT,
-    important: Sequelize.BOOLEAN
+    important: Sequelize.BOOLEAN,
+    likes: Sequelize.INTEGER
   },
   {
     freezeTableName: true
@@ -96,7 +105,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
               'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
             image:
               'https://images.unsplash.com/photo-1494972688394-4cc796f9e4c5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5966fbd4a3212dc13c7ad81c4d665354&auto=format&fit=crop&w=1350&q=80',
-            important: true
+            important: true,
+            likes: 0
           })
           .then(article => {
             article.createComment({
@@ -121,7 +131,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1419848449479-6c8a7d8d62c2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8d57d2a8902bf44864c7cbb7df2fafac&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         // $FlowFixMe
         category.createArticle({
@@ -140,7 +151,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ef06f88dab75b74252e22465ad9c99d&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         // $FlowFixMe
         category.createArticle({
@@ -159,7 +171,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1520525003249-2b9cdda513bc?ixlib=rb-0.3.5&s=e157bd2de45973d0a1ae09881af42552&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         // $FlowFixMe
         category.createArticle({
@@ -178,7 +191,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=20505ab3ec40e93846c7f4340f92ab99&auto=format&fit=crop&w=1349&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category
           // $FlowFixMe
@@ -198,7 +212,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
               'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
             image:
               'https://images.unsplash.com/photo-1525328437458-0c4d4db7cab4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a1a2b9825494963cba280fc043671b65&auto=format&fit=crop&w=1350&q=80',
-            important: true
+            important: true,
+            likes: 0
           })
           .then(article => {
             article.createComment({
@@ -223,7 +238,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1457327289196-f38b88d97147?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjExMzk2fQ&s=64f1f220ddebc6ce98f7fbe3b3b267dc&auto=format&fit=crop&w=1352&q=80',
-          frontPage: true
+          frontPage: true,
+          likes: 0
         });
         // $FlowFixMe
         category.createArticle({
@@ -242,7 +258,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1518297685135-c6d5cc247d13?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=031e4ea7eb45afd61c84f4c8236112c9&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
       })
       .then(() =>
@@ -269,7 +286,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=10794df94c2543bee8f590b3681452c7&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: 'Surfing World Championship 2019',
@@ -287,7 +305,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e259bc9483e8f8938b0245f96826c969&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Crossfit in Norway next year?',
@@ -305,7 +324,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e0f576d343645015367510d3829a582e&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Wimbledon 2018 - all you need to know',
@@ -323,7 +343,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1530915534664-4ac6423816b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6a277611932a58472ddd54bbc8201047&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: 'Magnus Carlsen weathers early Fabuano Caruana surprise in Game 5 draw – as it happened',
@@ -341,7 +362,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1528819622765-d6bcf132f793?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8cf14450e7ab6e30d85800342f9ed485&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: "Today's baseball game",
@@ -359,7 +381,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1475440197469-e367ec8eeb19?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d07e497e8f90af29b9c3da6a02dfa4ea&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Best archers in the world...',
@@ -377,7 +400,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1513907450027-b9926e160c2a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=825b2571e6253b4336f0fba4604e6443&auto=format&fit=crop&w=1349&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
       })
       .then(() =>
@@ -404,7 +428,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1528837715997-43c4adb12aa8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d552b5c6ccc06838eeaa5e8325f7408d&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: 'Something about Culture',
@@ -422,7 +447,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1523751126961-4365990f768b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eb4a3d03ae07a11ec953b81de8da6daf&auto=format&fit=crop&w=1347&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Cool culture content',
@@ -440,7 +466,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=330f47db0730dfb2f0017d3b5eb1417d&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'street art',
@@ -458,7 +485,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1501569420805-e4dd535ec970?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=995f02c0c5a36bcfe19d10f222c77060&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'More stuff about culture...',
@@ -476,7 +504,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1535510644066-fd447e3c7781?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7b0730eeb09e5aed977e8d3a833504e7&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Last thing about culture...',
@@ -494,7 +523,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1533903237682-b47efb7ebffd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=096378b666c2f4ca19c2e488745f1da1&auto=format&fit=crop&w=1402&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: 'Something about Culture',
@@ -512,7 +542,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1515900959941-d1cce424f5c4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c9c593bad87f0e4db0fdb8fcb965a90&auto=format&fit=crop&w=1351&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
       })
       .then(() =>
@@ -539,7 +570,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1516865622081-e98d705bb920?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8e453c06501d9fb07a1d9e4d598410be&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: 'Everything you need to know about software development',
@@ -557,7 +589,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=575755492ef51726cb066f422908b9d7&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'AI taking over the world',
@@ -575,7 +608,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=139f00301feb37e712adda8bf9d8b91f&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Super hot tech coming earlie 2020',
@@ -593,7 +627,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1512161537930-40e70617f1f7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3e24e3af165bab3083975566cfb85be9&auto=format&fit=crop&w=1350&q=80',
-          important: false
+          important: false,
+          likes: 0
         });
         category.createArticle({
           title: "WoW, the one HDD faster then all SDD's on the market",
@@ -611,7 +646,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1484662020986-75935d2ebc66?ixlib=rb-0.3.5&s=9bb240e2908fd74dbafd43c9a93b26b8&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Silent cooling for gaming',
@@ -629,7 +665,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1513366884929-f0b3bedfb653?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b111fd6819e93137251f2eefe1cf8b9c&auto=format&fit=crop&w=1350&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Best drones for photography 2018',
@@ -647,7 +684,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1488263590619-bc1fff43b6c1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c47433ac0414b561157e79989b4633ce&auto=format&fit=crop&w=1267&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
         category.createArticle({
           title: 'Supert camera...',
@@ -665,7 +703,8 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
             'Praesent id ipsum ut tortor aliquam sodales. Cras sodales convallis ex rhoncus commodo. Donec ornare ante a odio suscipit dapibus. Phasellus id nulla interdum leo vehicula interdum in vitae lectus. Suspendisse a nisi augue. Maecenas sollicitudin vitae elit sit amet pulvinar. Duis elementum urna nec massa egestas scelerisque. Vivamus at orci in dolor faucibus consequat. Phasellus ac interdum turpis. Integer nec egestas nibh. Mauris et dui tempor, cursus enim finibus, volutpat dolor. Donec ante eros, eleifend in diam sed, pellentesque accumsan nunc.',
           image:
             'https://images.unsplash.com/photo-1510282271343-fdc3dea55439?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bec0bf06a6a09fe9d55c2d2eaad97979&auto=format&fit=crop&w=1592&q=80',
-          important: true
+          important: true,
+          likes: 0
         });
       });
 });

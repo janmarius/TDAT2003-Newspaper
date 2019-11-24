@@ -92,3 +92,7 @@ body {
   left: -50%; /* or right 50% */
   text-align: left;
 }
+
+.likeButton {
+  float: right;
+}
