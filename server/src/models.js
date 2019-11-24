@@ -1,32 +1,8 @@
+// @flow
+
 import Sequelize from 'sequelize';
 import type { Model } from 'sequelize';
-require('dotenv').config();
-
-const sequelize = new Sequelize(
-  process.env.CI ? 'travis_ci' : process.env.DB_DATABASE,
-  process.env.CI ? 'root' : process.env.DB_USER,
-  process.env.CI ? '' : process.env.DB_PW,
-  {
-    host: process.env.CI ? '127.0.0.1' : process.env.DB_HOST, // The host is '127.0.0.1' when running in Travis CI
-    dialect: 'mysql',
-
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  }
-);
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+import sequelize from './db';
 
 export let Article: Class<
   Model<{ id?: number, title: string, body: string, image: string, important: boolean, category?: string }>
@@ -76,7 +52,7 @@ Article.hasMany(Comment, { foreignKey: { name: 'article_id', allowNull: false } 
 
 // Drop tables and create test data when not in production environment
 let production = process.env.NODE_ENV === 'production';
-// The sync promise can be used to wait for the database to be ready (for instance in your tests)
+
 export let sync = sequelize.sync({ force: production ? false : true }).then(() => {
   if (!production)
     return Category.create({
@@ -89,6 +65,24 @@ export let sync = sequelize.sync({ force: production ? false : true }).then(() =
           .createArticle({
             title: 'The war is almost over...',
             body:
+              '### Markdown header\n' +
+              '#### Javascript\n' +
+              '```javascript\n' +
+              'console.log("Hello World!")\n' +
+              '```\n' +
+              '#### html\n' +
+              '```html\n' +
+              '<!DOCTYPE html>\n' +
+              '<html>\n' +
+              '<head>\n' +
+              '<title>Page Title</title>\n' +
+              '</head>\n' +
+              '<body>\n' +
+              '<h1>My First Heading</h1>\n' +
+              '<p>My first paragraph.</p>\n\n' +
+              '</body>\n' +
+              '</html>\n' +
+              '```\n' +
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lorem eros, accumsan non ligula nec, varius porttitor mauris. Aenean lorem turpis, faucibus non semper vestibulum, fringilla vel leo. Vestibulum molestie nibh vitae nibh luctus, a pharetra libero finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean libero quam, volutpat quis egestas eu, cursus facilisis augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ac vulputate enim. Nam ultricies rutrum odio.\n' +
               '\n' +
               'Praesent vitae diam diam. Maecenas pharetra nibh a risus feugiat tristique. In sodales vel tellus sit amet convallis. Donec sit amet egestas felis, vitae consequat diam. Suspendisse aliquet facilisis tincidunt. Aliquam gravida quis eros vel ultrices. Duis ornare, dolor auctor lacinia imperdiet, magna massa vestibulum orci, sit amet malesuada dolor urna vel purus. Pellentesque quis mauris orci. Suspendisse pretium rhoncus metus, quis accumsan augue sodales eget.\n' +
