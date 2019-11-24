@@ -28,8 +28,6 @@ import { articleService } from './services';
 import { categoryService } from './services';
 import { commentService } from './services';
 
-let FontAwesome = require('react-fontawesome');
-
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {
   let script = document.createElement('script');
@@ -146,7 +144,7 @@ class ArticleDetails extends Component<{ match: { params: { id: number, category
 
 class ArticleEdit extends Component<{ match: { params: { id: number, category: string } } }> {
   categories: Category[] = [];
-  article: Article = article; // article: Article???
+  article: Article = article;
 
   render() {
     if (!this.article) return null;
