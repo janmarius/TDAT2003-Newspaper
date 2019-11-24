@@ -1,7 +1,10 @@
+// @flow
+
 import Sequelize from 'sequelize';
 require('dotenv').config();
 
 const sequelize = new Sequelize(
+  // $FlowFixMe
   process.env.CI ? 'travis_ci' : process.env.DB_DATABASE,
   process.env.CI ? 'root' : process.env.DB_USER,
   process.env.CI ? '' : process.env.DB_PW,
