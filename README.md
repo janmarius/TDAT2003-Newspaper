@@ -20,12 +20,10 @@
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
-- [Installing dependencies](#installing-dependencies)
-- [Compiling and running](#compiling-and-running)
+- [Cloning and installing dependencies](#cloning-and-installing-dependencies)
+- [Running](#running)
 - [Testing](#testing)
-- [What's included](#whats-included)
-- [Implemented functionality](#implemented-functionality)
-- [Future work](#future-work)
+- [Screenshots](#screenshots)
 
 
 
@@ -36,7 +34,7 @@ This community newspaper is a mini project in the course TDAT2003 - Software Eng
 * Node.js
 * npm
 
-## Cloning and Installing dependencies
+## Cloning and Installing Dependencies
 ```sh
 git clone https://github.com/janmarius/TDAT2003-Newspaper.git
 npm install --prefix TDAT2003-Newspaper/server
@@ -86,6 +84,3 @@ npm test --prefix TDAT2003-Newspaper/client
 ### Article Editing
 ![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example7.png)
 ![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example8.png)
-
-
-## Future work
