@@ -6,8 +6,11 @@ import { NavLink } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Comment } from '../services';
 import { Article } from '../services';
+import { ArticleDetails } from '../index';
 
 const dateFormat = require('dateformat');
+
+let FontAwesome = require('react-fontawesome');
 
 export class ArticleDetailsView extends Component<{ article: Article, comments: Comment[] }> {
   render() {
@@ -62,6 +65,25 @@ export class ArticleDetailsView extends Component<{ article: Article, comments: 
                   >
                     add comment
                   </NavLink>
+                  <p className={'card-text likeButton'}>
+                    {this.props.article.likes}{' '}
+                    <button
+                      type="button"
+                      className="btn btn-outline-dark"
+                      data-toggle="button"
+                      aria-pressed="true"
+                      autocomplete="off"
+                      onClick={() => {
+                        {
+                          let articleDetails = ArticleDetails.instance();
+                          if (articleDetails)
+                            articleDetails.save(this.props.article, this.props.article.id, this.props.article.category);
+                        }
+                      }}
+                    >
+                      <FontAwesome name="thumbs-up" />
+                    </button>
+                  </p>
                 </div>
               </div>
             </div>
