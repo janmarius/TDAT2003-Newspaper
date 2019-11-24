@@ -9,6 +9,11 @@ import { AllArticles } from '../src/components/FrontPageArticlesComponent';
 
 import { shallow, mount } from 'enzyme';
 import { NavLink } from 'react-router-dom';
+import { Home } from '../src/index';
+
+let FontAwesome = require('react-fontawesome');
+
+let home = new Home();
 
 describe('Alert tests', () => {
   const wrapper = shallow(<Alert />);
@@ -84,7 +89,8 @@ describe('AllArticles test', () => {
           important: true,
           category: 'News',
           image: 'https://www.google.no/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-          title: 'NewsTitle'
+          title: 'NewsTitle',
+          likes: 0
         },
         // $FlowFixMe
         {
@@ -92,10 +98,12 @@ describe('AllArticles test', () => {
           important: false,
           category: 'News2',
           image: 'https://www.google.no/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-          title: 'NewsTitle2'
+          title: 'NewsTitle2',
+          likes: 0
         }
       ]}
       maxNumberOfArticles={3}
+      inputObject={home}
     />
   );
 
@@ -120,6 +128,12 @@ describe('AllArticles test', () => {
               >
                 <h2 className={'card-title card-title-extra'}>{'NewsTitle'}</h2>
               </NavLink>
+              <p className={'card-text likeButton'}>
+                {0}{' '}
+                <button>
+                  <FontAwesome name="thumbs-up" />
+                </button>
+              </p>
             </div>
           </div>
         </div>

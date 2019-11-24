@@ -90,7 +90,8 @@ describe('Update one article', () => {
         image:
           'https://images.unsplash.com/photo-1513907450027-b9926e160c2a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=825b2571e6253b4336f0fba4604e6443&auto=format&fit=crop&w=1349&q=80',
         important: true,
-        category: temp_category
+        category: temp_category,
+        likes: 0
       })
       .then(response => {
         expect(response.statusCode).toBe(200);
