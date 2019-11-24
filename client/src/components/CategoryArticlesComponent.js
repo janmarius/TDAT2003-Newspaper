@@ -38,8 +38,8 @@ export class AllArticlesOfOneCategory extends Component<{ articles: Article[] }>
                       autocomplete="off"
                       onClick={() => {
                         {
-                            let articleCategoryList = ArticleCategoryList.instance();
-                            if (articleCategoryList) articleCategoryList.save(article, article.id, article.category);
+                          let articleCategoryList = ArticleCategoryList.instance();
+                          if (articleCategoryList) articleCategoryList.save(article, article.id, article.category);
                         }
                       }}
                     >

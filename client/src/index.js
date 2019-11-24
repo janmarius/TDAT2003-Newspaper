@@ -162,6 +162,17 @@ export class ArticleDetails extends Component<{ match: { params: { id: number, c
       .then(article => (this.article = article))
       .catch((error: Error) => Alert.danger(error.message));
   }
+
+  save(article: Article, id: number, category: string) {
+    articleService
+      .updateArticlesLikes(article, id, category)
+      .then(() => {
+        let articleDetails = ArticleDetails.instance();
+        if (articleDetails) articleDetails.mounted();
+        if (article) history.push('/category/' + category + '/id/' + id);
+      })
+      .catch((error: Error) => Alert.danger(error.message));
+  }
 }
 
 class ArticleEdit extends Component<{ match: { params: { id: number, category: string } } }> {
