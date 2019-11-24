@@ -28,7 +28,7 @@
 
 
 ## Introduction
-This community newspaper is a mini project in the course TDAT2003 - Software Engineering 2 with web applications. The newspaper is created as a communication paper, where everyone can publish an article in different categories, specifically News, Sport, Culture and Tech. 
+This community newspaper is a mini project in the course TDAT2003 - Software Engineering 2 with web applications. The newspaper is created as a communication paper, where everyone can publish an article in different categories, specifically News, Sport, Culture and Tech. The continuous integration is created with Travis CI. 
 
 ## Prerequisites
 * Node.js
