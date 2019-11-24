@@ -72,10 +72,20 @@ npm test --prefix TDAT2003-Newspaper/server
 npm test --prefix TDAT2003-Newspaper/client
 ```
 
-## What's included
-
-
-## Implemented functionality
+## Screenshots
+### Front Page and Live Feed
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example1.png)
+### Page Navigation and Footer
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example2.png)
+### Category View
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example3.png)
+### Javascript and HTML
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example5.png)
+### Likes, Comment, Edit and Delete Article
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example6.png)
+### Article Editing
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example7.png)
+![image](https://raw.githubusercontent.com/janmarius/TDAT2003-Newspaper/master/res/Website-example8.png)
 
 
 ## Future work
