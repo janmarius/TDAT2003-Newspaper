@@ -96,12 +96,6 @@ export class AddNewArticleForm extends Component<{
               className="form-control"
               id="importantAdd"
               type="checkbox"
-              // onChange={(event: SyntheticInputEvent<HTMLInputElement>) => {
-              //     console.log("Test ", event.target.value);
-              //     if (event.target.value) {
-              //         this.props.article.important = true;
-              //     }
-              // }}
               onChange={() => {
                 if (this.props.article) this.props.article.important = !this.props.article.important;
               }}
