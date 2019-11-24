@@ -117,7 +117,7 @@ class ArticleAddComment extends Component<{ match: { params: { id: number, categ
   }
 }
 
-class ArticleCategoryList extends Component<{ match: { params: { category: string } } }> {
+export class ArticleCategoryList extends Component<{ match: { params: { category: string } } }> {
   articles: Article[] = [];
 
   render() {
@@ -128,6 +128,17 @@ class ArticleCategoryList extends Component<{ match: { params: { category: strin
     articleService
       .getAllOfCategory(this.props.match.params.category)
       .then(articles => (this.articles = articles))
+      .catch((error: Error) => Alert.danger(error.message));
+  }
+
+  save(article: Article, id: number, category: string) {
+    articleService
+      .updateArticlesLikes(article, id, category)
+      .then(() => {
+        let articleCategoryList = ArticleCategoryList.instance();
+        if (articleCategoryList) articleCategoryList.mounted();
+        if (article) history.push('/category/' + this.props.match.params.category);
+      })
       .catch((error: Error) => Alert.danger(error.message));
   }
 }
