@@ -1,12 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import { Component } from 'react-simplified';
 
 // Widgets
 import { Alert } from '../src/widgets.js';
-import { NavBarMenu } from '../src/widgets.js';
-import { AllArticles } from '../src/widgets.js';
+import { NavBarMenu } from '../src/components/NavBarMenuComponent';
+import { AllArticles } from '../src/components/FrontPageArticlesComponent';
 
 import { shallow, mount } from 'enzyme';
 import { NavLink } from 'react-router-dom';

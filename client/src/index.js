@@ -5,18 +5,18 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 
-// Widgets
+// Components
 import { Alert } from './widgets';
-import { NavBarMenu } from './widgets';
-import { LiveNewsFeed } from './widgets';
-import { AllArticles } from './widgets';
-import { AddCommentForm } from './widgets';
-import { AllArticlesOfOneCategory } from './widgets';
-import { ArticleDetailsView } from './widgets';
-import { EditArticleForm } from './widgets';
-import { DeleteArticleForm } from './widgets';
-import { AddNewArticleForm } from './widgets';
-import { Footer } from './widgets';
+import { NavBarMenu } from './components/NavBarMenuComponent';
+import { LiveNewsFeed } from './components/LiveNewsFeedComponent';
+import { AllArticles } from './components/FrontPageArticlesComponent';
+import { AddCommentForm } from './components/AddCommentComponent';
+import { AllArticlesOfOneCategory } from './components/CategoryArticlesComponent';
+import { ArticleDetailsView } from './components/ArticleDetailsViewComponent';
+import { EditArticleForm } from './components/EditArticleComponent';
+import { DeleteArticleForm } from './components/DeleteArticleComponent';
+import { AddNewArticleForm } from './components/CreateArticleComponent';
+import { Footer } from './components/FooterComponent';
 
 // Services
 import { Comment } from './services';
