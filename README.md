@@ -46,7 +46,7 @@ npm install --prefix TDAT2003-Newspaper/client
 ## Running
 Add .env in TDAT2003-Newspaper/server:
 ```sh
-touch /TDAT2003-Newspaper/server/.env
+touch TDAT2003-Newspaper/server/.env
 ```
 Add database information in .env:
 ```
