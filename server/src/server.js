@@ -43,6 +43,10 @@ app.put('/api/articles/category/:category/id/:id', (req: Request, res: Response)
   articles.updateArticle(req, res);
 });
 
+app.put('/api/articles/category/:category/id/:id/likes', (req: Request, res: Response) => {
+  articles.updateArticleLikes(req, res);
+});
+
 app.delete('/api/articles/category/:category/id/:id', (req: Request, res: Response) => {
   articles.deleteArticle(req, res);
 });

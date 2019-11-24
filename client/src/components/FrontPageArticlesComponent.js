@@ -3,13 +3,18 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { NavLink } from 'react-router-dom';
-import { article, Article, Category } from '../services';
+import { article, Article, articleService, Category } from '../services';
+import { Home } from '../index';
 
 let FontAwesome = require('react-fontawesome');
 
+import createHashHistory from 'history/createHashHistory';
+const history = createHashHistory();
+
 export class AllArticles extends Component<{
   articles: Article[],
-  maxNumberOfArticles: number
+  maxNumberOfArticles: number,
+  inputObject: Home
 }> {
   startArticle: number = 0;
   currentPage: number = 1;
@@ -35,6 +40,24 @@ export class AllArticles extends Component<{
                     >
                       <h2 className={'card-title card-title-extra'}>{article.title}</h2>
                     </NavLink>
+                    <p className={'card-text likeButton'}>
+                      {article.likes}{' '}
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-toggle="button"
+                        aria-pressed="true"
+                        autocomplete="off"
+                        onClick={() => {
+                          {
+                            let home = Home.instance();
+                            if (home) home.save(article, article.id, article.category);
+                          }
+                        }}
+                      >
+                        <FontAwesome name="thumbs-up" />
+                      </button>
+                    </p>
                   </div>
                 </div>
               </div>

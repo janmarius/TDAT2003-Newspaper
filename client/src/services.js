@@ -11,6 +11,7 @@ export class Article {
   createdAt: string;
   updatedAt: string;
   category: string;
+  likes: number;
 }
 export let article = new Article();
 
@@ -29,6 +30,10 @@ class ArticleService {
 
   updateArticles(article: Article, id: number, category: string): Promise<void> {
     return axios.put('/api/articles/category/' + category + '/id/' + id, article);
+  }
+
+  updateArticlesLikes(article: Article, id: number, category: string): Promise<void> {
+    return axios.put('/api/articles/category/' + category + '/id/' + id + '/likes', article);
   }
 
   deleteArticles(id: number, category: string): Promise<void> {
