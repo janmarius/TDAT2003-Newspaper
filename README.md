@@ -14,7 +14,7 @@
   <a href="https://travis-ci.org/janmarius/TDAT2003-Newspaper?icon=travis/">Travis CI</a>
 </p>
 
-[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-Newspaper.svg?branch=master)](https://travis-ci.org/janmarius/TDAT2003-Newspaper)
+[![Travis Build Status](https://travis-ci.org/janmarius/TDAT2003-Newspaper.svg?branch=main)](https://travis-ci.org/janmarius/TDAT2003-Newspaper)
 
 ## Table of contents
 
